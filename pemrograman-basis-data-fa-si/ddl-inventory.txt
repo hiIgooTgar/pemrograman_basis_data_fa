@@ -1,0 +1,52 @@
+CREATE DATABASE 24sa11a159_inventory;
+USE 24sa11a159_inventory;
+
+DROP DATABASE 24sa11a159_inventory;
+
+CREATE TABLE supplier (
+ kode_supplier VARCHAR(10) PRIMARY KEY,
+ nama_supplier VARCHAR(30)
+)
+
+CREATE TABLE customer (
+ kode_customer VARCHAR(10) PRIMARY KEY,
+ nama_customer VARCHAR(30),
+ alamat_customer VARCHAR(30),
+ telepon_customer VARCHAR(15)
+)
+
+CREATE TABLE kategori (
+ kode_kategori VARCHAR(10) PRIMARY KEY,
+ nama_kategori VARCHAR(30)
+)
+
+CREATE TABLE barang (
+ kode_barang VARCHAR(10) PRIMARY KEY,
+ nama_barang VARCHAR(30),
+ kode_kategori VARCHAR(10),
+ kode_supplier VARCHAR(10),
+ harga INT(10),
+ stok INT(10),
+ 
+ FOREIGN KEY (kode_kategori) REFERENCES kategori(kode_kategori),
+ FOREIGN KEY (kode_supplier) REFERENCES supplier(kode_supplier)
+)
+
+CREATE TABLE pembelian (
+ kode_pembelian VARCHAR(10) PRIMARY KEY,
+ kode_barang VARCHAR(10),
+ jumlah_beli INT(10),
+ 
+ FOREIGN KEY (kode_barang) REFERENCES barang(kode_barang)
+)
+
+CREATE TABLE transaksi (
+ kode_transaksi VARCHAR(10) PRIMARY KEY,
+ kode_customer VARCHAR(10),
+ kode_barang VARCHAR(10),
+ tanggal_transaksi DATE,
+ jumlah_transaksi INT(4),
+ 
+ FOREIGN KEY (kode_customer) REFERENCES customer(kode_customer),
+ FOREIGN KEY (kode_barang) REFERENCES barang(kode_barang)
+)
