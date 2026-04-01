@@ -257,7 +257,17 @@ CALL sp_cek_kategori_barang('BR-06');
 
 
 /*
-5.
+5. Buatlah Query untuk menampilkan data barang pada database inventory dengan
+keterangan barang Persediaan Barang Telah Habis jika jumlah stok barang adalah 0,
+Persediaan Barang Kurang Dari 10 jika jumlah stok kurang dari 10, sedangkan jika
+jumlah stok lebih dari atau sama dengan 10 maka teks yang ditampilkan adalah
+Persediaan Barang Masih Banyak.
+Query dibuat menggunakan:
+
+a. Percabangan IF Statement
+b. Percabangan Case Statement
+c. Kombinasi procedure dan percabangan IF Statement
+d. Kombinasi procedure dan percabangan Case Statement
 
 */
 
@@ -330,7 +340,20 @@ CALL sp_cek_stok_barang('BR-02');
 
 
 /*
-6.
+6. Buatlah Query untuk menampilkan data barang pada database inventory dengan
+keterangan barang. Asumsikan bahwa kita ingin memberikan hadiah berupa Handuk untuk
+customer yang melakukan order pembelian lebih dari atau sama dengan 15 barang
+dan P i r i n g untuk customer yang melakukan order pembelian lebih dari 10 atau sama
+dengan 10 tapi kurang dari 15 barang. Sedangkan untuk customer yang order
+pembeliannya kurang dari 10 barang maka tidak akan diberi hadiah. Tugas anda adalah
+membuat laporan yang dapat memberikan informasi bahwa customer bersangkutan
+mendapatkan hadiah dalam bentuk apa.
+Query dibuat menggunakan:
+
+a. Percabangan IF Statement
+b. Percabangan Case Statement
+c. Kombinasi procedure dan percabangan IF Statement
+d. Kombinasi procedure dan percabangan Case Statement
 
 */
 
