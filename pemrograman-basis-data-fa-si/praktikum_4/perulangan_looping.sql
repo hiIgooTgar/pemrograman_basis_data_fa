@@ -397,3 +397,42 @@ END $$
 DELIMITER ;
 
 CALL simulasi_kurang_repeat();
+
+
+
+-- Soal Tambahan Latihan Soal Praktikum 4
+/* Soal: Buatlah sebuah Stored Procedure bernama SegitigaPascal yang menerima satu parameter input tinggi. 
+Prosedur ini harus menampilkan deret Segitiga Pascal sebanyak baris yang ditentukan. */
+
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE SegitigaPascal(IN tinggi INT)
+BEGIN
+    DECLARE i INT DEFAULT 0;
+    DECLARE j INT DEFAULT 0;
+    DECLARE val INT DEFAULT 1;
+    DECLARE baris_teks TEXT DEFAULT '';
+    DECLARE hasil_akhir TEXT DEFAULT '';
+
+    WHILE i < tinggi DO
+        SET baris_teks = '';
+        SET val = 1;
+        SET j = 0;
+
+        WHILE j <= i DO
+            SET baris_teks = CONCAT(baris_teks, val, ' ');
+            SET val = val * (i - j) / (j + 1);
+            SET j = j + 1;
+        END WHILE;
+
+        SET hasil_akhir = CONCAT(hasil_akhir, baris_teks, '\n');
+        SET i = i + 1;
+    END WHILE;
+
+    SELECT hasil_akhir AS Pascal_Triangle;
+END $$
+
+DELIMITER ;
+
+CALL SegitigaPascal(5);
+
+
