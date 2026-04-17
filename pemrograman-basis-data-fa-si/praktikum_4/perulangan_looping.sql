@@ -16,61 +16,61 @@ BEGIN
 	  ITERATE ulang;
 	 ELSE
 	  SET hasil = CONCAT(hasil, i, ' ');
-	 END IF;
-       END LOOP;
+	 end if;
+       end loop;
        
-       SELECT hasil;
-END$$
+       select hasil;
+end$$
+
+delimiter;
+
+call LeaveIterate2();
+
+
+
+
+
+
+delimiter $$
+create or replace procedure RepeatLoop2()
+begin
+	declare i int;
+	declare hasil varchar(20) default '';
+	set i = 1;
+	
+	repeat
+	 set hasil = concat(hasil, i, ' ');
+	 set i = i + 1;
+	 until i > 5
+	end repeat;
+	
+	select hasil;
+end $$
+delimiter;
+
+call RepeatLoop2();
+
+
+
+
+delimiter $$
+create or replace procedure WhileLoop2()
+begin
+	declare i int;
+	declare hasil varchar(20) default '';
+	set i = 1;
+	
+	while i <= 5 do
+	 set hasil = concat(hasil, i, ' ');
+	 set i = i + 1;
+	end while;
+
+	select hasil;
+end $$
 
 DELIMITER;
 
-CALL LeaveIterate2();
-
-
-
-
-
-
-DELIMITER $$
-CREATE OR REPLACE PROCEDURE RepeatLoop2()
-BEGIN
-	DECLARE i INT;
-	DECLARE hasil VARCHAR(20) DEFAULT '';
-	SET i = 1;
-	
-	REPEAT
-	 SET hasil = CONCAT(hasil, i, ' ');
-	 SET i = i + 1;
-	 UNTIL i > 5
-	END REPEAT;
-	
-	SELECT hasil;
-END $$
-DELIMITER;
-
-CALL RepeatLoop2();
-
-
-
-
-DELIMITER $$
-CREATE OR REPLACE PROCEDURE WhileLoop2()
-BEGIN
-	DECLARE i INT;
-	DECLARE hasil VARCHAR(20) DEFAULT '';
-	SET i = 1;
-	
-	WHILE i <= 5 DO
-	 SET hasil = CONCAT(hasil, i, ' ');
-	 SET i = i + 1;
-	END WHILE;
-
-	SELECT hasil;
-END $$
-
-DELIMITER;
-
-CALL WhileLoop2();
+call WhileLoop2();
 
 
 
@@ -104,7 +104,7 @@ END $$
 
 DELIMITER ;
 
-CALL Kelipatan3_Loop();
+call Kelipatan3_Loop();
 
 
 -- REPEAT
@@ -130,7 +130,7 @@ END $$
 
 DELIMITER ;
 
-CALL Kelipatan3_Repeat();
+call Kelipatan3_Repeat();
 
 
 -- WHILE 
@@ -156,7 +156,7 @@ END $$
 
 DELIMITER ;
 
-CALL Kelipatan3_While();
+call Kelipatan3_While();
 
 
 
@@ -204,7 +204,7 @@ END $$
 
 DELIMITER ;
 
-CALL HasilNegatif_Repeat();
+call HasilNegatif_Repeat();
 
 
 
@@ -254,7 +254,7 @@ END $$
 
 DELIMITER ;
 
-CALL MateriLoop1_Loop();
+call MateriLoop1_Loop();
 
 
 -- REPEAT
@@ -283,7 +283,7 @@ END $$
 
 DELIMITER ;
 
-CALL MateriLoop1_Repeat();
+call MateriLoop1_Repeat();
 
 
 
@@ -324,7 +324,7 @@ DELIMITER $$
 CREATE OR REPLACE PROCEDURE tambah_stok_while()
 BEGIN
     DECLARE i INT;
-    SET i = 1;
+    set i = 1;
     
     WHILE i <= 10 DO
         UPDATE barang 
@@ -338,7 +338,7 @@ END $$
 
 DELIMITER ;
 
-CALL tambah_stok_while();
+call tambah_stok_while();
 
 
 
@@ -351,7 +351,7 @@ DELIMITER $$
 CREATE OR REPLACE PROCEDURE naik_harga_loop()
 BEGIN
     DECLARE counter INT;
-    SET counter = 1;
+    set counter = 1;
     
     kenaikan: LOOP
         IF counter > 5 THEN
@@ -369,7 +369,7 @@ END $$
 
 DELIMITER ;
 
-CALL naik_harga_loop();
+call naik_harga_loop();
 
 
 /* 3 Tim IT ingin melakukan simulasi pengurangan stok pada barang Mobil (BR-07) sebanyak
@@ -381,7 +381,7 @@ DELIMITER $$
 CREATE OR REPLACE PROCEDURE simulasi_kurang_repeat()
 BEGIN
     DECLARE counter INT;
-    SET counter = 1;
+    set counter = 1;
     
     REPEAT
         UPDATE barang 
@@ -396,12 +396,12 @@ END $$
 
 DELIMITER ;
 
-CALL simulasi_kurang_repeat();
+call simulasi_kurang_repeat();
 
 
 
 -- Soal Tambahan Latihan Soal Praktikum 4
-/* Soal: Buatlah sebuah Stored Procedure bernama SegitigaPascal yang menerima satu parameter input tinggi. 
+/* Buatlah sebuah Stored Procedure bernama SegitigaPascal yang menerima satu parameter input tinggi. 
 Prosedur ini harus menampilkan deret Segitiga Pascal sebanyak baris yang ditentukan. */
 
 DELIMITER $$
@@ -433,6 +433,6 @@ END $$
 
 DELIMITER ;
 
-CALL SegitigaPascal(5);
+call SegitigaPascal(5);
 
 
